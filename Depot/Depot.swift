@@ -20,7 +20,7 @@ public class Depot {
     public static func persist<T:PropertyListReadable>(object: T, key: String) {
         
         // 1- get the storehouse that objec can be stored in.
-        let storehouse = getStorehouse(forkey: key)
+        let storehouse = getStorehouse(key)
         
         // 2- write the passed object to the storehouse.
         storehouse.write(object: object.propertyListRepresentation() as AnyObject)
@@ -34,7 +34,7 @@ public class Depot {
     public static func persist<T:PropertyListReadable>(objects: [T], key: String) {
         
         // 1- get the storehouse that objec can be stored in.
-        let storehouse = getStorehouse(forkey: key)
+        let storehouse = getStorehouse(key)
         
         // 2- construct array of dictionaries that will be persisted
         var arryOfDics = [AnyObject]()
@@ -55,7 +55,7 @@ public class Depot {
     public static func retreive<T:PropertyListReadable>(key: String) -> T? {
         
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(forkey: key)
+        let storehouse = getStorehouse(key)
         
         if storehouse.cachedDataExists() {
             // this return an initialized struct with it's all properties.
@@ -73,7 +73,7 @@ public class Depot {
     public static func retreive<T:PropertyListReadable>(key: String) -> [T]? {
         
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(forkey: key)
+        let storehouse = getStorehouse(key)
         
         guard storehouse.cachedDataExists(), let cachedArray = storehouse.retrieveCachedData() as? Array<AnyObject> else {
             return nil
@@ -93,19 +93,19 @@ public class Depot {
     /* Retreive generic struct that conform to `PropertyListReadable` protocol using passed dicionary */
     private static func retreive<T:PropertyListReadable>(dictionary: Dictionary<String, AnyObject>) -> T? {
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(forPayload: dictionary as AnyObject)
+        let storehouse = getStorehouse(dictionary as AnyObject)
         
         // this return an initialized struct with it's all properties.
         return T(storehouse: storehouse)
     }
     
     /* Get Storehouse object initialized with specific key */
-    static func getStorehouse(forkey: String) -> protocol<Storehousable, StorehouseWritable> {
-        return UserDefaultsStore(key: forkey)
+    static func getStorehouse(_ key: String) -> protocol<Storehousable, StorehouseWritable> {
+        return UserDefaultsStore(key: key)
     }
     
     /* Get Storehouse object initialized with generic payload */
-    static func getStorehouse(forPayload: AnyObject) -> Storehousable {
+    static func getStorehouse(_ forPayload: AnyObject) -> Storehousable {
         return UserDefaultsStore(payload: forPayload)
     }
     
