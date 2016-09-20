@@ -64,7 +64,7 @@ extension String: PropertyListReadableType {}
 extension Int: PropertyListReadableType {}
 extension Float: PropertyListReadableType {}
 extension Double: PropertyListReadableType {}
-extension Date: PropertyListReadableType {}
+extension NSDate: PropertyListReadableType {}
 
 
 

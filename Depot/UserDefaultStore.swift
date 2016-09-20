@@ -18,7 +18,7 @@ public class UserDefaultsStore: Storehousable, StorehouseWritable {
     var storeKey: String
     var payload: AnyObject?
     
-    let defaults = UserDefaults.standard
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     public init(key: String) {
         self.storeKey = key
@@ -36,7 +36,7 @@ public class UserDefaultsStore: Storehousable, StorehouseWritable {
      */
     public func read<T : PropertyListReadable>(key: String) -> T? {
         
-        guard let storedObject = self.defaults.object(forKey: key) else {
+        guard let storedObject = self.defaults.objectForKey(key) else {
             return nil
         }
         // the store that contains the struct.
@@ -72,8 +72,8 @@ public class UserDefaultsStore: Storehousable, StorehouseWritable {
      Accept an object and store it.
      - parameter key: The object to be stored
      */
-    func write(object: AnyObject) {
-        self.defaults.set(object, forKey: self.storeKey)
+    func write(_ object: AnyObject) {
+        self.defaults.setObject(object, forKey: self.storeKey)
     }
     
     /**
@@ -81,7 +81,7 @@ public class UserDefaultsStore: Storehousable, StorehouseWritable {
      - returns: Bool
      */
     func cachedDataExists() -> Bool {
-        if (self.defaults.object(forKey: self.storeKey) != nil) {
+        if (self.defaults.objectForKey(self.storeKey) != nil) {
             return true
         }
         
@@ -97,7 +97,7 @@ public class UserDefaultsStore: Storehousable, StorehouseWritable {
             return payload
         }
         
-        guard let cachedDictionary = self.defaults.object(forKey: self.storeKey) else {
+        guard let cachedDictionary = self.defaults.objectForKey(self.storeKey) else {
                 return nil
         }
         
