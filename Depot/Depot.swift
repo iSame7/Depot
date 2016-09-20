@@ -20,7 +20,7 @@ public class Depot {
     public static func persist<T:PropertyListReadable>(object: T, key: String) {
         
         // 1- get the storehouse that objec can be stored in.
-        let storehouse = getStorehouse(key: key)
+        let storehouse = getStorehouse(forkey: key)
         
         // 2- write the passed object to the storehouse.
         storehouse.write(object: object.propertyListRepresentation() as AnyObject)
@@ -31,10 +31,10 @@ public class Depot {
      - parameter object: Object that will be persisted
      - parameter key: The object's key
      */
-    public static func persist<T:PropertyListReadable>(objects: [T], forkey: String) {
+    public static func persist<T:PropertyListReadable>(objects: [T], key: String) {
         
         // 1- get the storehouse that objec can be stored in.
-        let storehouse = getStorehouse(key: forkey)
+        let storehouse = getStorehouse(forkey: key)
         
         // 2- construct array of dictionaries that will be persisted
         var arryOfDics = [AnyObject]()
@@ -55,7 +55,7 @@ public class Depot {
     public static func retreive<T:PropertyListReadable>(key: String) -> T? {
         
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(key: key)
+        let storehouse = getStorehouse(forkey: key)
         
         if storehouse.cachedDataExists() {
             // this return an initialized struct with it's all properties.
@@ -73,7 +73,7 @@ public class Depot {
     public static func retreive<T:PropertyListReadable>(key: String) -> [T]? {
         
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(key: key)
+        let storehouse = getStorehouse(forkey: key)
         
         guard storehouse.cachedDataExists(), let cachedArray = storehouse.retrieveCachedData() as? Array<AnyObject> else {
             return nil
@@ -100,8 +100,8 @@ public class Depot {
     }
     
     /* Get Storehouse object initialized with specific key */
-    static func getStorehouse(key: String) -> protocol<Storehousable, StorehouseWritable> {
-        return UserDefaultsStore(key: key)
+    static func getStorehouse(forkey: String) -> protocol<Storehousable, StorehouseWritable> {
+        return UserDefaultsStore(key: forkey)
     }
     
     /* Get Storehouse object initialized with generic payload */
