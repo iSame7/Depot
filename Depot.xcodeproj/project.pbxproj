@@ -10,6 +10,13 @@
 		4721A1191D8DEFB100BF6665 /* Depot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4721A10F1D8DEFB000BF6665 /* Depot.framework */; };
 		4721A11E1D8DEFB100BF6665 /* DepotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4721A11D1D8DEFB100BF6665 /* DepotTests.swift */; };
 		4721A1201D8DEFB100BF6665 /* Depot.h in Headers */ = {isa = PBXBuildFile; fileRef = 4721A1121D8DEFB000BF6665 /* Depot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47C992831D9161A100708C28 /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9927D1D9161A100708C28 /* PropertyListReadable.swift */; };
+		47C992841D9161A100708C28 /* Mirror+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9927E1D9161A100708C28 /* Mirror+Conversion.swift */; };
+		47C992851D9161A100708C28 /* Depot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9927F1D9161A100708C28 /* Depot.swift */; };
+		47C992861D9161A100708C28 /* UserDefaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C992801D9161A100708C28 /* UserDefaultStore.swift */; };
+		47C992871D9161A100708C28 /* Storehousable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C992811D9161A100708C28 /* Storehousable.swift */; };
+		47C992881D9161A100708C28 /* StorehouseWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C992821D9161A100708C28 /* StorehouseWritable.swift */; };
+		47C9928A1D9161C000708C28 /* TestStructTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C992891D9161C000708C28 /* TestStructTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +36,13 @@
 		4721A1181D8DEFB100BF6665 /* DepotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DepotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4721A11D1D8DEFB100BF6665 /* DepotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepotTests.swift; sourceTree = "<group>"; };
 		4721A11F1D8DEFB100BF6665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47C9927D1D9161A100708C28 /* PropertyListReadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListReadable.swift; sourceTree = "<group>"; };
+		47C9927E1D9161A100708C28 /* Mirror+Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Mirror+Conversion.swift"; sourceTree = "<group>"; };
+		47C9927F1D9161A100708C28 /* Depot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Depot.swift; sourceTree = "<group>"; };
+		47C992801D9161A100708C28 /* UserDefaultStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultStore.swift; sourceTree = "<group>"; };
+		47C992811D9161A100708C28 /* Storehousable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storehousable.swift; sourceTree = "<group>"; };
+		47C992821D9161A100708C28 /* StorehouseWritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorehouseWritable.swift; sourceTree = "<group>"; };
+		47C992891D9161C000708C28 /* TestStructTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStructTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +85,12 @@
 		4721A1111D8DEFB000BF6665 /* Depot */ = {
 			isa = PBXGroup;
 			children = (
+				47C9927D1D9161A100708C28 /* PropertyListReadable.swift */,
+				47C9927E1D9161A100708C28 /* Mirror+Conversion.swift */,
+				47C9927F1D9161A100708C28 /* Depot.swift */,
+				47C992801D9161A100708C28 /* UserDefaultStore.swift */,
+				47C992811D9161A100708C28 /* Storehousable.swift */,
+				47C992821D9161A100708C28 /* StorehouseWritable.swift */,
 				4721A1121D8DEFB000BF6665 /* Depot.h */,
 				4721A1131D8DEFB000BF6665 /* Info.plist */,
 			);
@@ -81,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				4721A11D1D8DEFB100BF6665 /* DepotTests.swift */,
+				47C992891D9161C000708C28 /* TestStructTypes.swift */,
 				4721A11F1D8DEFB100BF6665 /* Info.plist */,
 			);
 			path = DepotTests;
@@ -149,6 +170,7 @@
 					4721A10E1D8DEFB000BF6665 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 8U3N7M58T5;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					4721A1171D8DEFB100BF6665 = {
@@ -198,6 +220,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C992841D9161A100708C28 /* Mirror+Conversion.swift in Sources */,
+				47C992831D9161A100708C28 /* PropertyListReadable.swift in Sources */,
+				47C992881D9161A100708C28 /* StorehouseWritable.swift in Sources */,
+				47C992861D9161A100708C28 /* UserDefaultStore.swift in Sources */,
+				47C992871D9161A100708C28 /* Storehousable.swift in Sources */,
+				47C992851D9161A100708C28 /* Depot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C9928A1D9161C000708C28 /* TestStructTypes.swift in Sources */,
 				4721A11E1D8DEFB100BF6665 /* DepotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +351,7 @@
 		4721A1241D8DEFB100BF6665 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8U3N7M58T5;
@@ -334,6 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.smapps.Depot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -341,6 +372,7 @@
 		4721A1251D8DEFB100BF6665 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8U3N7M58T5;
@@ -360,6 +392,7 @@
 		4721A1271D8DEFB100BF6665 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 8U3N7M58T5;
 				INFOPLIST_FILE = DepotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -372,6 +405,7 @@
 		4721A1281D8DEFB100BF6665 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 8U3N7M58T5;
 				INFOPLIST_FILE = DepotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -400,6 +434,7 @@
 				4721A1251D8DEFB100BF6665 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4721A1261D8DEFB100BF6665 /* Build configuration list for PBXNativeTarget "DepotTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +443,7 @@
 				4721A1281D8DEFB100BF6665 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
