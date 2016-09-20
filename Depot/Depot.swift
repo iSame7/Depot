@@ -31,10 +31,10 @@ public class Depot {
      - parameter object: Object that will be persisted
      - parameter key: The object's key
      */
-    public static func persist<T:PropertyListReadable>(objects: [T], key: String) {
+    public static func persist<T:PropertyListReadable>(objects: [T], forkey: String) {
         
         // 1- get the storehouse that objec can be stored in.
-        let storehouse = getStorehouse(key: key)
+        let storehouse = getStorehouse(key: forkey)
         
         // 2- construct array of dictionaries that will be persisted
         var arryOfDics = [AnyObject]()
@@ -100,7 +100,7 @@ public class Depot {
     }
     
     /* Get Storehouse object initialized with specific key */
-    static func getStorehouse(key: String) -> Storehousable & StorehouseWritable {
+    static func getStorehouse(key: String) -> protocol<Storehousable, StorehouseWritable> {
         return UserDefaultsStore(key: key)
     }
     
