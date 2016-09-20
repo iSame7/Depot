@@ -72,7 +72,7 @@ public class UserDefaultsStore: Storehousable, StorehouseWritable {
      Accept an object and store it.
      - parameter key: The object to be stored
      */
-    func write(_ object: AnyObject) {
+    func write(object: AnyObject) {
         self.defaults.setObject(object, forKey: self.storeKey)
     }
     

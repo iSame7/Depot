@@ -73,7 +73,7 @@ extension Mirror {
 
      - returns: [String: AnyObject]
      */
-    private func combine(_ from: [String: AnyObject], addition: [String: AnyObject]) -> [String: AnyObject] {
+    private func combine(from: [String: AnyObject], addition: [String: AnyObject]) -> [String: AnyObject] {
         var result = [String: AnyObject]()
         [from, addition].forEach { dict in
             dict.forEach { result[$0.0] = $0.1 }

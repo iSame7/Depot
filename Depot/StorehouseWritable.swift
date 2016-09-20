@@ -16,7 +16,7 @@ protocol StorehouseWritable {
      Accept an object(NSDictionary) and store it.
      - parameter key: The object to be stored
      */
-    func write(_ object: AnyObject)
+    func write(object: AnyObject)
  
     /**
      Load persisted data from stored if it exists.

@@ -91,7 +91,7 @@ public class Depot {
     }
     
     /* Retreive generic struct that conform to `PropertyListReadable` protocol using passed dicionary */
-    private static func retreive<T:PropertyListReadable>(_ dictionary: Dictionary<String, AnyObject>) -> T? {
+    private static func retreive<T:PropertyListReadable>(dictionary: Dictionary<String, AnyObject>) -> T? {
         // 1- get the storehouse that objec is stored in.
         let storehouse = getStorehouse(dictionary as AnyObject)
         
@@ -100,12 +100,12 @@ public class Depot {
     }
     
     /* Get Storehouse object initialized with specific key */
-    static func getStorehouse(_ key: String) -> protocol<Storehousable, StorehouseWritable> {
-        return UserDefaultsStore(key: key)
+    static func getStorehouse(forKey: String) -> protocol<Storehousable, StorehouseWritable> {
+        return UserDefaultsStore(key: forKey)
     }
     
     /* Get Storehouse object initialized with generic payload */
-    static func getStorehouse(_ forPayload: AnyObject) -> Storehousable {
+    static func getStorehouse(forPayload: AnyObject) -> Storehousable {
         return UserDefaultsStore(payload: forPayload)
     }
     
