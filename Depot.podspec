@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'Depot'
-s.version = '0.1.0'
+s.version = '0.2.0'
 s.license = 'MIT'
 s.summary = 'Struct persistance framework for Swift'
 s.homepage = 'https://github.com/iSame7/Depot'
