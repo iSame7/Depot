@@ -24,7 +24,7 @@ class DepotTests: XCTestCase {
     func testPersistableStruct() {
         let person = Person(name: "Sameh", age: 30, id: 100)
         
-        Depot.persist(object: person, key: "person")
+        Depot.persist(person, key: "person")
         
         //        print("Persisted Struct: \(UserDefaults.standard.object(forKey: "person"))")
         //
@@ -33,7 +33,7 @@ class DepotTests: XCTestCase {
         //
         //        XCTAssert("Sameh" == "Sameh", "basic string was incorrect")
         
-        if let retreivedPerson:Person = Depot.retreive(key: "person") {
+        if let retreivedPerson:Person = Depot.retreive("person") {
             XCTAssert(retreivedPerson.name == "Sameh", "person name is not correct")
             XCTAssert(retreivedPerson.age == 30, "person age is not correct")
             XCTAssert(retreivedPerson.id == 100, "person id is not correct")
@@ -45,9 +45,9 @@ class DepotTests: XCTestCase {
     func testPersistableNilStruct() {
         let emptyPerson = EmptyPerson(name: "Steve", age: 50, id: 1)
         
-        Depot.persist(object: emptyPerson, key: "empty")
+        Depot.persist(emptyPerson, key: "empty")
         
-        let retreivedPerson: EmptyPerson? = Depot.retreive(key: "empty")
+        let retreivedPerson: EmptyPerson? = Depot.retreive("empty")
         XCTAssert(retreivedPerson == nil)
     }
     
@@ -58,9 +58,9 @@ class DepotTests: XCTestCase {
         
         let persons = [Person]( arrayLiteral: person1, person2, person3)
         
-        Depot.persist(objects: persons, key: "person_collection")
+        Depot.persist(persons, key: "person_collection")
         
-        if let retreivedPersons: [Person] = Depot.retreive(key: "person_collection") {
+        if let retreivedPersons: [Person] = Depot.retreive("person_collection") {
             XCTAssert(retreivedPersons.count == 3, "Retreived count of structs is not correct")
             
             XCTAssert(retreivedPersons[1].name == "Steve" , "Person2 name is not correct")
