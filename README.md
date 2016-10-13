@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://download.canva.com/DAB_Y-_pA2Q/22/custom/0001-55635799.png?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Depot.png&response-expires=Thu%2C%2013%20Oct%202016%2021%3A00%3A00%20GMT&AWSAccessKeyId=AKIAIXVXZHH2YGSHDJVQ&Expires=1476392400&Signature=gTE5yk3GFJP69IIdjkSAjnRSOtw%3D" alt="Storage" />
+</p>
+
 # Depot
 Struct persistance framework for Swift. Simple as that:
 
