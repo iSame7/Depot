@@ -72,7 +72,7 @@ struct Person: PropertyListReadable {
 ```
 ## License
 
-Pantry made available under the MIT license.
+Depot made available under the MIT license.
 
 ## Credits
 
