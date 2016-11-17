@@ -26,6 +26,7 @@ class DepotClassTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    // persistable class
     func testPersistableClass() {
         let personclass = PersonClass(name: "Sameh", age: 30, id: 100)
         
@@ -40,6 +41,7 @@ class DepotClassTests: XCTestCase {
         }
     }
     
+    // persistable array of classes
     func testPersistableClassArray() {
         let person1 = PersonClass(name: "Sameh", age: 30, id: 100)
         let person2 = PersonClass(name: "Steve", age: 40.3, id: 66)
@@ -58,6 +60,31 @@ class DepotClassTests: XCTestCase {
         } else {
             XCTFail("no person class collection retreived")
         }
+    }
+    
+    // persistable parent child classes
+    func testParentChildPersistableClass()  {
+        let personclass = PersonClass(name: "Sameh", age: 30, id: 100)
+        
+        let parentChildClass = ParentwithChildClass(name: "Parent", person: personclass)
+        
+        Depot.persist(parentChildClass, key: "parent_child")
+
+        if let retreivedParentwithChild:ParentwithChildClass = Depot.retreive("parent_child") {
+            XCTAssert(retreivedParentwithChild.name == "Parent", "person name is not correct")
+            
+            if let retreivedPerson:PersonClass = retreivedParentwithChild.person {
+                XCTAssert(retreivedPerson.name == "Sameh", "person name is not correct")
+                XCTAssert(retreivedPerson.age == 30, "person age is not correct")
+                XCTAssert(retreivedPerson.id == 100, "person id is not correct")
+            } else {
+                XCTFail("no person class retreived")
+            }
+            
+        } else {
+            XCTFail("no Parent with child class retreived")
+        }
+        
     }
     
 }

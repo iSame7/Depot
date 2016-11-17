@@ -45,7 +45,23 @@ class PersonClass: BaseClass {
         self.id = storehouse.read("id") ?? 22
         
         super.init(storehouse: storehouse)
-
     }
+}
 
+class ParentwithChildClass: BaseClass {
+    var person: PersonClass?
+    
+    convenience init(name: String, person: PersonClass?) {
+        
+        self.init(storehouse: DummyStorhouse())
+        
+        self.name = name
+        self.person = person
+    }
+    
+    required init(storehouse: Storehousable) {
+        self.person = storehouse.read("person")
+        
+        super.init(storehouse: storehouse)
+    }
 }
