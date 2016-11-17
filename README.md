@@ -24,6 +24,9 @@ Depot can store differnet types:
 * [x] Arrays of structs
 * [x] Nested structs
 * [x] Enums with raw types
+* [x] Classes
+* [x] Array of classes
+* [x] Parent with childs classes
 
 ## Installation
 
