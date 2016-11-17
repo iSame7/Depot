@@ -21,9 +21,9 @@ struct Person: PropertyListReadable {
     }
     
     init?(storehouse: Storehousable) {
-        self.name = storehouse.read(key: "name") ?? ""
-        self.age = storehouse.read(key: "age") ?? 25.5
-        self.id = storehouse.read(key: "id") ?? 22
+        self.name = storehouse.read("name") ?? ""
+        self.age = storehouse.read("age") ?? 25.5
+        self.id = storehouse.read("id") ?? 22
     }
 }
 struct EmptyPerson: PropertyListReadable {
@@ -54,8 +54,8 @@ struct ParentPerson: PropertyListReadable {
     }
     
     init?(storehouse: Storehousable) {
-        self.name = storehouse.read(key: "name") ?? ""
-        self.age = storehouse.read(key: "age") ?? 25.5
-        self.id = storehouse.read(key: "number") ?? 22
+        self.name = storehouse.read("name") ?? ""
+        self.age = storehouse.read("age") ?? 25.5
+        self.id = storehouse.read("number") ?? 22
     }
 }
