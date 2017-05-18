@@ -21,13 +21,13 @@ extension Mirror {
             guard let key = child.label else { return result }
             var actualValue = child.value
             var childMirror = Mirror(reflecting: child.value)
-            if let style = childMirror.displayStyle where style == .Optional && childMirror.children.count > 0 {
+            if let style = childMirror.displayStyle, style == .optional && childMirror.children.count > 0 {
                 // unwrap Optional type first
                 actualValue = childMirror.children.first!.value
                 childMirror = Mirror(reflecting: childMirror.children.first!.value)
             }
 
-            if let style = childMirror.displayStyle where style == .Collection {
+            if let style = childMirror.displayStyle, style == .collection {
                 // collections need to be unwrapped,
                 // toDictionary called on each children
                 let converted: [AnyObject] = childMirror.children
@@ -36,17 +36,17 @@ extension Mirror {
                         if let convertable = collectionChild.value as? PropertyListReadable {
                             return convertable.propertyListRepresentation() as AnyObject
                         } else {
-                            return collectionChild.value as! AnyObject
+                            return collectionChild.value as AnyObject
                         }
                 }
-                return combine(result, addition: [key: converted as AnyObject])
+                return combine(from: result, addition: [key: converted as AnyObject])
 
             } else {
                 // non-collection types, toDictionary or just cast default types
                 if let value = actualValue as? PropertyListReadable {
-                    return combine(result, addition: [key: value.propertyListRepresentation() as AnyObject])
+                    return combine(from: result, addition: [key: value.propertyListRepresentation() as AnyObject])
                 } else if let value = actualValue as? AnyObject {
-                    return combine(result, addition: [key: value])
+					return combine(from: result, addition: [key: value])
                 } else {
                     // throw an error? not a type we support
                 }
@@ -60,8 +60,8 @@ extension Mirror {
          If the subject is not a class, this will be an empty Optional. 
          If this is a class-based type, you'll get a new Mirror.
          */
-        if let superClassMirror = self.superclassMirror() {
-            return combine(output, addition: superClassMirror.convertToDictionary())
+        if let superClassMirror = self.superclassMirror {
+            return combine(from: output, addition: superClassMirror.convertToDictionary())
         }
         return output
     }
@@ -81,3 +81,4 @@ extension Mirror {
         return result
     }
 }
+

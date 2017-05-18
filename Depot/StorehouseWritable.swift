@@ -30,3 +30,4 @@ protocol StorehouseWritable {
      */
     func cachedDataExists() -> Bool
 }
+
