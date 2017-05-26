@@ -20,10 +20,10 @@ public class Depot {
     public static func persist<T:PropertyListReadable>(object: T, key: String) {
         
         // 1- get the storehouse that objec can be stored in.
-        let storehouse = getStorehouse(key)
-        
+		let storehouse = getStorehouse(forKey: key)
+			
         // 2- write the passed object to the storehouse.
-        storehouse.write(object.propertyListRepresentation() as AnyObject)
+        storehouse.write(object: object.propertyListRepresentation() as AnyObject)
     }
     
     /**
@@ -34,15 +34,15 @@ public class Depot {
     public static func persist<T:PropertyListReadable>(objects: [T], key: String) {
         
         // 1- get the storehouse that objec can be stored in.
-        let storehouse = getStorehouse(key)
-        
+		let storehouse = getStorehouse(forKey: key)
+		
         // 2- construct array of dictionaries that will be persisted
         var arryOfDics = [AnyObject]()
         for object in objects {
             arryOfDics.append(object.propertyListRepresentation() as AnyObject)
         }
         // 3- write the passed object to the storehouse.
-        storehouse.write(arryOfDics as AnyObject)
+        storehouse.write(object: arryOfDics as AnyObject)
     }
     
     // MARK: retreive objects
@@ -55,8 +55,8 @@ public class Depot {
     public static func retreive<T:PropertyListReadable>(key: String) -> T? {
         
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(key)
-        
+		let storehouse = getStorehouse(forKey: key)
+		
         if storehouse.cachedDataExists() {
             // this return an initialized struct with it's all properties.
             return T(storehouse: storehouse)
@@ -73,8 +73,8 @@ public class Depot {
     public static func retreive<T:PropertyListReadable>(key: String) -> [T]? {
         
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(key)
-        
+		let storehouse = getStorehouse(forKey: key)
+		
         guard storehouse.cachedDataExists(), let cachedArray = storehouse.retrieveCachedData() as? Array<AnyObject> else {
             return nil
         }
@@ -82,7 +82,7 @@ public class Depot {
         var retreivedObjects = [T]()
         for case let object as Dictionary<String, AnyObject> in cachedArray {
             
-            if let retrievedObject: T = retreive(object) {
+			if let retrievedObject: T = retreive(dictionary: object) {
                 retreivedObjects.append(retrievedObject)
             }
         }
@@ -93,14 +93,14 @@ public class Depot {
     /* Retreive generic struct that conform to `PropertyListReadable` protocol using passed dicionary */
     private static func retreive<T:PropertyListReadable>(dictionary: Dictionary<String, AnyObject>) -> T? {
         // 1- get the storehouse that objec is stored in.
-        let storehouse = getStorehouse(dictionary as AnyObject)
+		let storehouse = getStorehouse(forPayload: dictionary as AnyObject)
         
         // this return an initialized struct with it's all properties.
         return T(storehouse: storehouse)
     }
     
     /* Get Storehouse object initialized with specific key */
-    static func getStorehouse(forKey: String) -> protocol<Storehousable, StorehouseWritable> {
+    static func getStorehouse(forKey: String) -> Storehousable & StorehouseWritable {
         return UserDefaultsStore(key: forKey)
     }
     
@@ -111,3 +111,4 @@ public class Depot {
     
     
 }
+

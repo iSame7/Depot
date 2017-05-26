@@ -24,3 +24,4 @@ public protocol Storehousable: class {
      */
     func read<T: PropertyListReadableType>(key: String) -> T?
 }
+
